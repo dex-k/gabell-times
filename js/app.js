@@ -154,11 +154,21 @@ const ticker = setInterval( function(){
     setCurrentPeriod();
 
     let next = getNextPeriod();
-    
-    let nextStartTime = (next.endTime == beforeDayStart ? next.endTime : next.startTime);
+    let h,m,s;
+    if (currentPeriod.endTime == beforeDayStart && currentTime[0] >= afterDayEnd[0]) {
+        let nextStartTime = next.endTime;
+        let nowToMid = calcTimeDifference(currentTime, [23,59,59])
+        let midToNow = calcTimeDifference([0,0,0], nextStartTime);
+        [h,m,s] = secondsToTime(
+            timeToSeconds(nowToMid) + timeToSeconds(midToNow)
+        );
 
-    let timeLeft = calcTimeDifference(currentTime, nextStartTime);
-    let [h,m,s] = timeLeft;
+    } else {
+        let nextStartTime = next.startTime;
+        let timeLeft = calcTimeDifference(currentTime, nextStartTime);
+        [h,m,s] = timeLeft;
+
+    }
 
     HTMLperiod.innerHTML = currentPeriod.name;
     HTMLhours.innerHTML = ('0' + h).slice(-2);
