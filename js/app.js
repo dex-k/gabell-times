@@ -88,18 +88,17 @@ const periods = [
     }
 ]
 const periodFromTime = function(t) {
-    let [h,m,s] = [t[0], t[1], t[2]]
+    let timeSeconds = timeToSeconds(t);
     for (let i = 0; i < periods.length; i++){
-        if ((h > periods[i].startTime[0] && m > periods[i].startTime[1]) && 
-            (h < periods[i].endTime[0]   && m < periods[i].endTime[1])) {
-            return periods[0]
-        } else {
-            return {
-                name: "Not school time",
-                startTime: afterDayEnd,
-                endTime: beforeDayStart,
-            }
+        if ( (timeSeconds >= timeToSeconds(periods[i].startTime)) && 
+             (timeSeconds <= timeToSeconds(periods[i].endTime)) ) {
+            return periods[i]
         }
+    }
+    return {
+        name: "Not school time",
+        startTime: afterDayEnd,
+        endTime: beforeDayStart,
     }
 }
 
@@ -125,9 +124,9 @@ const timeToSeconds = function(t) {
 const secondsToTime = function(seconds) {
     let remaining = seconds;
     let h = Math.floor(remaining / 3600); //whole hours
-    remaining -= h * 3600;
+    remaining %= 3600;
     let m = Math.floor(remaining / 60); //whole minutes
-    remaining -= m * 60;
+    remaining %= 60;
     let s = remaining; //seconds 
     return [h,m,s]
 }
@@ -135,15 +134,19 @@ const secondsToTime = function(seconds) {
 const calcTimeDifference = function(t1, t2) {
     s1 = timeToSeconds(t1);
     s2 = timeToSeconds(t2);
-    secondsBetween = Math.abs(s2 - s1);
+    secondsBetween = Math.abs(s1 - s2);
     timeBetween = secondsToTime(secondsBetween);
     return timeBetween;
 }
 
 const getNextPeriod = function(current) {
     let currentEndTime = currentPeriod.endTime;
-    currentEndTime[1]++
-    return periodFromTime(currentEndTime);
+    let nextPeriodStartTime = [
+        currentEndTime[0],
+        currentEndTime[1] + 1,
+        currentEndTime[2]
+    ]
+    return periodFromTime(nextPeriodStartTime);
 }
 //fire every second
 const ticker = setInterval( function(){
@@ -151,7 +154,8 @@ const ticker = setInterval( function(){
     setCurrentPeriod();
 
     let next = getNextPeriod();
-    let nextStartTime = (next.endTime == beforeDayStart ? next.endTime : nextStartTime);
+    
+    let nextStartTime = (next.endTime == beforeDayStart ? next.endTime : next.startTime);
 
     let timeLeft = calcTimeDifference(currentTime, nextStartTime);
     let [h,m,s] = timeLeft;
