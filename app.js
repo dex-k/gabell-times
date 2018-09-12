@@ -21,7 +21,7 @@ var beforeDayStart = [
 
 const periods = [
     {
-        name: "morning class",
+        name: "A morning class",
         startTime: dayStartTime,
         endTime: [8,9,00],
         length: 39,
@@ -81,7 +81,7 @@ const periods = [
         length: 54,
     },
     {
-        name: "Afternoon class",
+        name: "A late class",
         startTime: [15,21,00],
         endTime: dayEndTime,
         length: 54,
