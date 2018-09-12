@@ -1,3 +1,7 @@
+Notification.requestPermission().then(function(result) {
+    console.log("notification permission granted");
+  });
+
 var HTMLperiod = document.getElementsByClassName("period")[0],
     HTMLhours = document.getElementsByClassName("hours")[0],
     HTMLminutes = document.getElementsByClassName("minutes")[0],
@@ -168,6 +172,23 @@ const ticker = setInterval( function(){
         let timeLeft = calcTimeDifference(currentTime, nextStartTime);
         [h,m,s] = timeLeft;
 
+    }
+    sLeft = timeToSeconds([h,m,s]);
+    switch (sLeft) {
+        case 600: //10 mins
+            var ten = new Notification("10 minutes until " + next.name);
+            break;
+        case 300: //5 mins
+            ten.close.bind(ten)
+            var five = new Notification("5 minutes until " + next.name);
+            break;
+        case 60: //1 min
+            five.close.bind(five)
+            var one = new Notification("1 minute until " + next.name);
+            break;
+        case 0: //done
+            one.close.bind(one)
+            break;
     }
 
     HTMLperiod.innerHTML = currentPeriod.name;
