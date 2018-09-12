@@ -33,13 +33,13 @@ const periods = [
     {
         name: "Period 1",
         startTime: [8,30,00],
-        endTime: [9,23,00],
+        endTime: [9,24,00],
         length: 53,
     },
     {
         name: "Period 2",
         startTime: [9,24,00],
-        endTime: [10,17,00],
+        endTime: [10,18,00],
         length: 53,
     },
     {
@@ -51,37 +51,37 @@ const periods = [
     {
         name: "Tutor/assembly/chapel",
         startTime: [10,36,00],
-        endTime: [11,03,00],
+        endTime: [11,04,00],
         length: 53,
     },
     {
         name: "Period 3",
         startTime: [11,04,00],
-        endTime: [11,57,00],
+        endTime: [11,58,00],
         length: 53,
     },
     {
         name: "Period 4",
         startTime: [11,58,00],
-        endTime: [12,51,00],
+        endTime: [12,52,00],
         length: 53,
     },
     {
         name: "Lunch",
         startTime: [12,52,00],
-        endTime: [13,31,00],
+        endTime: [13,32,00],
         length: 39,
     },
     {
         name: "Period 5",
         startTime: [13,32,00],
-        endTime: [14,25,00],
+        endTime: [14,26,00],
         length: 53,
     },
     {
         name: "Period 6",
         startTime: [14,26,00],
-        endTime: [15,20,00],
+        endTime: [15,21,00],
         length: 54,
     },
     {
