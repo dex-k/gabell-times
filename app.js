@@ -156,7 +156,7 @@ const ticker = setInterval( function(){
     let next = getNextPeriod();
     let h,m,s;
     if (currentPeriod.endTime == beforeDayStart && currentTime[0] >= afterDayEnd[0]) {
-        let nextStartTime = next.endTime;
+        let nextStartTime = next.startTime;
         let nowToMid = calcTimeDifference(currentTime, [23,59,59])
         let midToNow = calcTimeDifference([0,0,0], nextStartTime);
         [h,m,s] = secondsToTime(
