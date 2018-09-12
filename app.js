@@ -99,6 +99,18 @@ const periodFromTime = function(t) {
             return periods[i]
         }
     }
+    if ( (timeSeconds >= timeToSeconds(periods[0].endTime)) && 
+         (timeSeconds <= timeToSeconds(periods[1].startTime)) ) {
+            return {
+                name: "Before period 1",
+                startTime: [periods[0].endTime[0],
+                            periods[0].endTime[1] + 1,
+                            periods[0].endTime[2]],
+                endTime: [periods[1].endTime[0],
+                          periods[1].endTime[1] - 1,
+                          periods[1].endTime[2]],
+            }
+    }
     return {
         name: "Not school time",
         startTime: afterDayEnd,
