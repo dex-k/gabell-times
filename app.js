@@ -10,7 +10,8 @@ var HTMLperiod = document.getElementsByClassName("period")[0],
     currentPeriod, //periods[x]
     currentTime = [0,0,0], //h,m,s
     dayStartTime = [7,30,00],
-    dayEndTime = [16,15,00];
+    dayEndTime = [16,15,00],
+    bellTimeDifference = 45;
 
 var beforeDayStart = [
         dayStartTime[0],
@@ -122,7 +123,7 @@ const setCurrentTime = function(){
     let d = new Date();
     currentTime[0] = d.getHours(),
     currentTime[1] = d.getMinutes(),
-    currentTime[2] = d.getSeconds();
+    currentTime[2] = d.getSeconds() + bellTimeDifference;
 }
 
 const setCurrentPeriod = function(){
