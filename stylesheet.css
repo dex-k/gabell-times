@@ -38,20 +38,6 @@ body, html {
     font-family: monospace;
 }
 
-/* #bookmark {
-    margin: 0;
-    padding: 0 .4em .1em .4em;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    text-decoration: none;
-    font-size: 0.8em;
-    color: #555;
-    font-variant: small-caps;
-
-    background-color: #fff;
-} */
-
 #bookmark {
     text-decoration: inherit;
     color: inherit;
