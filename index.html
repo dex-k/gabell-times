@@ -12,13 +12,16 @@
         <div class="content">
                 <p>It is currently:</p>
                 <p class="period">Loading...</p>
-                <p>The bell will ring in:</p>
+                <p>The 
+                        <a id="bookmark" href="javascript:document.body.innerHTML+='<iframe id=\x22gabell\x22 frameborder=\x220\x22 src=\x22https://dex-k.github.io/gabell-times/\x22 style=\x22position:absolute;top:10px;right:10px;z-index:99999999;width:300px;height:200px;transform:scale(0.75);border-radius:10px\x22></iframe>';setTimeout(function(){document.getElementById('gabell').outerHTML=''},4000);">
+                            bell
+                        </a>
+                    will ring in:</p>
                 <p class="time">
                     <span class="hours">xx</span>:<span class="minutes">xx</span>:<span class="seconds">xx</span>
                 </p>
         </div>
     </div>
-<a id="bookmark" href="javascript:document.body.innerHTML+='<iframe id=\x22gabell\x22 frameborder=\x220\x22 src=\x22https://dex-k.github.io/gabell-times/\x22 style=\x22position:absolute;top:10px;right:10px;z-index:99999999;width:300px;height:200px;transform:scale(0.75);border-radius:10px\x22></iframe>';setTimeout(function(){document.getElementById('gabell').outerHTML=''},4000);">bookmark link</a>
 </body>
 <script src="./app.js"></script>
 </html>
